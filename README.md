@@ -7,6 +7,7 @@
 - Custom Hooks
 - Reusable Components
 - Industry Standard Folder Structure
+- Responsive Design
 
 ## Link
 
