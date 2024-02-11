@@ -32,7 +32,7 @@ function CourseCard({ data }) {
     <div className="border p-3 rounded pointer position-relative shadow-sm">
       <div className="row align-items-center">
         <div className="col-5">
-          <div className="overflow-hidden border rounded">
+          <div className="overflow-hidden rounded">
             <img
               src={data?.courseImg}
               alt="img"
