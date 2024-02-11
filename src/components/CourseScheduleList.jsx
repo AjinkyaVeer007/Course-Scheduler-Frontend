@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { useScheduleList } from "../utils/useScheduleList";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 function CourseScheduleList() {
   const scheduleList = useSelector((state) => state.scheduleData.data);
@@ -34,7 +35,7 @@ function CourseScheduleList() {
                   <td>{i + 1}</td>
                   <td>{schedule?.course?.name}</td>
                   <td>{schedule?.assignUser?.name}</td>
-                  <td>{schedule?.assignDate}</td>
+                  <td>{moment(schedule?.assignDate).format("YYYY-MM-DD")}</td>
                   <td>
                     <MdDelete color="tomato" size={"20px"} />
                   </td>

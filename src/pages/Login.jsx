@@ -34,7 +34,7 @@ function Login() {
   const handleValidation = () => {
     const validations = {
       email: !regexPatternForEmail.test(form.email),
-      password: !regexPatternForPassword.test(form.password),
+      password: !form.password.length,
     };
     setIsInValid((prev) => ({
       ...prev,

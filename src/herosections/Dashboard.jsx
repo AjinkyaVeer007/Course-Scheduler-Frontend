@@ -9,55 +9,61 @@ import { useCourseList } from "../utils/useCourseList";
 function Dashboard() {
   const courseList = useSelector((state) => state.courseData.data);
 
+  const userType = localStorage.getItem("userType");
+
   const navigate = useNavigate();
   const getCourseList = useCourseList();
 
   useEffect(() => {
-    getCourseList();
+    userType === "admin" && getCourseList();
   }, []);
   return (
     <div className="row justify-content-center g-0 mx-5 animeBottomToTop">
-      <div className="col-7">
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <div style={{ fontSize: "20px" }} className="fw-medium">
-            Course List
+      {userType === "admin" && (
+        <div className="col-7">
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <div style={{ fontSize: "20px" }} className="fw-medium">
+              Course List
+            </div>
+            <div
+              onClick={() => navigate("/main/course/new")}
+              style={{
+                color: themeColor.primary,
+                fontSize: "12px",
+              }}
+              className="pointer text-decoration-underline fw-medium"
+            >
+              Create New
+            </div>
           </div>
-          <div
-            onClick={() => navigate("/main/course/new")}
-            style={{
-              color: themeColor.primary,
-              fontSize: "12px",
-            }}
-            className="pointer text-decoration-underline fw-medium"
-          >
-            Create New
+          <div>
+            {courseList.length
+              ? courseList.map((course) => (
+                  <div key={course?._id} className="mb-3">
+                    <CourseCard data={course} />
+                  </div>
+                ))
+              : ""}
           </div>
         </div>
-        <div>
-          {courseList.length
-            ? courseList.map((course) => (
-                <div key={course?._id} className="mb-3">
-                  <CourseCard data={course} />
-                </div>
-              ))
-            : ""}
-        </div>
-      </div>
-      <div className="col-5 px-4">
+      )}
+      <div className={`${userType === "admin" ? "col-5" : "col-10"} px-4`}>
         <div className="d-flex justify-content-between align-items-center mb-4">
           <div style={{ fontSize: "20px" }} className="fw-medium">
             Scheduled Lectures
           </div>
-          <div
-            onClick={() => navigate("/main/schedule")}
-            style={{
-              color: themeColor.primary,
-              fontSize: "12px",
-            }}
-            className="pointer text-decoration-underline fw-medium"
-          >
-            Schedule New
-          </div>
+          {userType === "admin" && (
+            <div
+              onClick={() => navigate("/main/schedule")}
+              style={{
+                color: themeColor.primary,
+                fontSize: "12px",
+              }}
+              className="pointer text-decoration-underline fw-medium"
+            >
+              Schedule New
+            </div>
+          )}
         </div>
         <div className="border rounded p-2 shadow-sm">
           <CourseScheduleTable />

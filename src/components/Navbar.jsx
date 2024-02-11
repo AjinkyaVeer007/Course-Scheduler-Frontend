@@ -19,23 +19,25 @@ function Navbar() {
       >
         CourseTracker
       </div>
-      <div className="d-flex align-items-center gap-4">
-        {navTabs &&
-          navTabs.map((nav) => (
-            <div
-              onClick={() => navigate(nav?.navigate)}
-              key={nav.id}
-              style={
-                location.pathname === nav?.navigate
-                  ? activeNavTab
-                  : notactiveNavTab
-              }
-              className="pointer fw-medium"
-            >
-              {nav?.name}
-            </div>
-          ))}
-      </div>
+      {localStorage.getItem("userType") === "admin" && (
+        <div className="d-flex align-items-center gap-4">
+          {navTabs &&
+            navTabs.map((nav) => (
+              <div
+                onClick={() => navigate(nav?.navigate)}
+                key={nav.id}
+                style={
+                  location.pathname === nav?.navigate
+                    ? activeNavTab
+                    : notactiveNavTab
+                }
+                className="pointer fw-medium"
+              >
+                {nav?.name}
+              </div>
+            ))}
+        </div>
+      )}
       <div>
         <RiLogoutCircleRLine size={"20px"} />
       </div>
