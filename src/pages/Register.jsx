@@ -79,7 +79,7 @@ function Register() {
     <div className="fullscreen">
       <Toaster />
       <div className="row justify-content-center mt-5">
-        <div className="col-4">
+        <div className="col-10 col-lg-4 col-md-5">
           <div className="border rounded p-4 shadow-sm">
             <div className="fs-3 fw-bold text-center">Register</div>
             <div className="border-bottom my-3"></div>

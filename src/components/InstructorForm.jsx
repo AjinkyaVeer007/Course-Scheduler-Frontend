@@ -82,7 +82,7 @@ function InstructorForm() {
         Create New Instructor
       </div>
       <div className="row g-4 justify-content-center">
-        <div className="col-4">
+        <div className="col-12 col-lg-4">
           <Form.Group>
             <Form.Label>Name</Form.Label>
             <Form.Control
@@ -94,7 +94,7 @@ function InstructorForm() {
             />
           </Form.Group>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-lg-4">
           <Form.Group>
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -106,7 +106,7 @@ function InstructorForm() {
             />
           </Form.Group>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-lg-4">
           <Form.Group>
             <Form.Label>One time password</Form.Label>
             <Form.Control
@@ -118,7 +118,7 @@ function InstructorForm() {
             />
           </Form.Group>
         </div>
-        <div className="col-2">
+        <div className="col-4 col-lg-2">
           <Button
             name={"Save"}
             handleClick={handleRegister}

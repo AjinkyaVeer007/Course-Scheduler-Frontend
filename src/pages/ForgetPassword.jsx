@@ -57,18 +57,15 @@ function ForgetPassword() {
 
     const apiData = {
       method: "post",
-      url: BASE_URL + "api/v1/user/login",
+      url: BASE_URL + "api/v1/user/changepassword",
       data: data,
     };
 
     const response = await apihandler(apiData);
 
     if (response?.success) {
-      localStorage.setItem("userId", response?.data?._id);
-      localStorage.setItem("userType", response?.data?.userType);
-      localStorage.setItem("adminId", response?.data?.adminId);
-      localStorage.setItem("token", response?.token);
-      navigate("/main/dashboard");
+      toast.success(response?.message);
+      navigate("/");
     }
     setIsLoading(false);
   };
@@ -77,7 +74,7 @@ function ForgetPassword() {
     <div className="fullscreen">
       <Toaster />
       <div className="row justify-content-center mt-5">
-        <div className="col-4">
+        <div className="col-10 col-lg-4 col-md-5">
           <div className="border rounded p-4 shadow-sm">
             <div className="fs-3 fw-bold text-center">Change Password</div>
             <div className="border-bottom my-3"></div>
@@ -117,7 +114,7 @@ function ForgetPassword() {
               Back to login
             </div>
             <Button
-              name={"Login"}
+              name={"Save"}
               bgColor={themeColor.primary}
               handleClick={handleChangePassword}
               preIcon={isLoading && <Spinner size="sm" />}

@@ -109,7 +109,7 @@ function ScheduleCourseForm() {
         Schedule Course
       </div>
       <div className="row g-3 mt-2 justify-content-center">
-        <div className="col-4">
+        <div className="col-12 col-lg-4">
           <Form.Group>
             <Form.Label>Select Course</Form.Label>
             <Select
@@ -121,7 +121,7 @@ function ScheduleCourseForm() {
             />
           </Form.Group>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-lg-4">
           <Form.Group>
             <Form.Label>Select Instructor</Form.Label>
             <Select
@@ -133,7 +133,7 @@ function ScheduleCourseForm() {
             />
           </Form.Group>
         </div>
-        <div className="col-4">
+        <div className="col-12 col-lg-4">
           <Form.Group>
             <Form.Label>Select Date</Form.Label>
             <Form.Control
@@ -145,7 +145,7 @@ function ScheduleCourseForm() {
             />
           </Form.Group>
         </div>
-        <div className="col-2">
+        <div className="col-4 col-lg-2">
           <Button
             preIcon={isLoading && <Spinner size="sm" />}
             name={"Save"}

@@ -78,7 +78,7 @@ function UploadCourse() {
   };
   return (
     <div className="row justify-content-center g-0 animeBottomToTop">
-      <div className="col-5">
+      <div className="col-10 col-lg-5 col-md-6">
         <div style={{ fontSize: "20px" }} className="fw-medium mb-2">
           Upload New Course
         </div>
