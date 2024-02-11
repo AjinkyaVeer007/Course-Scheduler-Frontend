@@ -10,6 +10,7 @@
 
 ## Link
 
+- [Video Link](https://drive.google.com/file/d/1EFC4UHTT5jGDn9ZHBzIFhu0DWOiBDObD/view?usp=drive_link)
 - [Production Link](https://lectureschedulerweb.netlify.app/)
 
 ## Author-Contact
