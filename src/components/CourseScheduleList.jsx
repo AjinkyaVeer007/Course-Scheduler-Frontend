@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
+import { useScheduleList } from "../utils/useScheduleList";
+import { useSelector } from "react-redux";
 
 function CourseScheduleList() {
+  const scheduleList = useSelector((state) => state.scheduleData.data);
+
+  const getScheduleList = useScheduleList();
+
+  useEffect(() => {
+    getScheduleList();
+  }, []);
   return (
     <div>
       <div style={{ fontSize: "20px" }} className="fw-medium mb-4">
@@ -19,15 +28,19 @@ function CourseScheduleList() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Python</td>
-            <td>Rushikesh</td>
-            <td>1-July-2024</td>
-            <td>
-              <MdDelete color="tomato" size={"20px"} />
-            </td>
-          </tr>
+          {scheduleList?.length
+            ? scheduleList.map((schedule, i) => (
+                <tr key={schedule?._id}>
+                  <td>{i + 1}</td>
+                  <td>{schedule?.course?.name}</td>
+                  <td>{schedule?.assignUser?.name}</td>
+                  <td>{schedule?.assignDate}</td>
+                  <td>
+                    <MdDelete color="tomato" size={"20px"} />
+                  </td>
+                </tr>
+              ))
+            : ""}
         </tbody>
       </Table>
     </div>
