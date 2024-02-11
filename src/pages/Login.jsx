@@ -76,7 +76,7 @@ function Login() {
   return (
     <div className="fullscreen">
       <Toaster />
-      <div className="row justify-content-center mt-5">
+      <div className="row justify-content-center g-0 mt-5">
         <div className="col-10 col-lg-4 col-md-5">
           <div className="border rounded p-4 shadow-sm">
             <div className="fs-3 fw-bold text-center">Login</div>

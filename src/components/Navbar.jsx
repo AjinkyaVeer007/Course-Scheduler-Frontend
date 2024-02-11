@@ -2,8 +2,9 @@ import React from "react";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { activeNavTab, navTabs, notactiveNavTab } from "../utils/constant";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
 
-function Navbar() {
+function CustomNavbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -12,37 +13,39 @@ function Navbar() {
     navigate("/");
   };
   return (
-    <div className="px-4 py-2 bg-white d-flex align-items-center justify-content-between sticky-top">
-      <div
-        onClick={() => navigate("/main/dashboard")}
-        className="fw-bold fs-4 pointer"
-      >
-        CourseTracker
-      </div>
-      {localStorage.getItem("userType") === "admin" && (
-        <div className="d-flex align-items-center gap-4">
-          {navTabs &&
-            navTabs.map((nav) => (
-              <div
-                onClick={() => navigate(nav?.navigate)}
-                key={nav.id}
-                style={
-                  location.pathname === nav?.navigate
-                    ? activeNavTab
-                    : notactiveNavTab
-                }
-                className="pointer fw-medium"
-              >
-                {nav?.name}
-              </div>
-            ))}
-        </div>
-      )}
-      <div>
-        <RiLogoutCircleRLine size={"20px"} onClick={handleLogout} />
-      </div>
-    </div>
+    <Navbar expand="lg" className="bg-body-tertiary sticky-top">
+      <Container>
+        <NavbarBrand>Lecture Scheduler</NavbarBrand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="ms-auto" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          {localStorage.getItem("userType") === "admin" && (
+            <Nav className="m-auto">
+              {navTabs &&
+                navTabs.map((nav) => (
+                  <Nav.Link
+                    onClick={() => navigate(nav?.navigate)}
+                    key={nav.id}
+                    style={
+                      location.pathname === nav?.navigate
+                        ? activeNavTab
+                        : notactiveNavTab
+                    }
+                    className="pointer fw-medium"
+                  >
+                    {nav?.name}
+                  </Nav.Link>
+                ))}
+            </Nav>
+          )}
+          <Nav>
+            <Nav.Link onClick={handleLogout}>
+              <RiLogoutCircleRLine size={"25px"} />
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default Navbar;
+export default CustomNavbar;

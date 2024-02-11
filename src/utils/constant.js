@@ -1,8 +1,8 @@
 export const BASE_URL = "https://lecture-schedule.onrender.com/";
 
 export const themeColor = {
-  primary: "#FFB534",
-  accent: "#ffe3b3",
+  primary: "#FF6868",
+  accent: "#F9EFDB",
 };
 
 export const navTabs = [

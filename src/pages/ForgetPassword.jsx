@@ -73,7 +73,7 @@ function ForgetPassword() {
   return (
     <div className="fullscreen">
       <Toaster />
-      <div className="row justify-content-center mt-5">
+      <div className="row justify-content-center mt-5 g-0">
         <div className="col-10 col-lg-4 col-md-5">
           <div className="border rounded p-4 shadow-sm">
             <div className="fs-3 fw-bold text-center">Change Password</div>

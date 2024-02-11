@@ -18,7 +18,7 @@ function Dashboard() {
     userType === "admin" && getCourseList();
   }, []);
   return (
-    <div className="row justify-content-center g-0 mx-5 animeBottomToTop">
+    <div className="row justify-content-center g-0 mx-3 mx-lg-5 mx-md-4 animeBottomToTop">
       {userType === "admin" && (
         <div className="col-12 col-lg-7 col-md-12">
           <div className="d-flex justify-content-between align-items-center mb-4">
@@ -56,7 +56,7 @@ function Dashboard() {
           userType === "admin"
             ? "col-12 col-lg-5 col-md-12"
             : "col-12 col-md-10 col-lg-10"
-        } px-4`}
+        } px-0 px-lg-4 px-md-3`}
       >
         <div className="d-flex justify-content-between align-items-center mb-4">
           <div style={{ fontSize: "20px" }} className="fw-medium">
