@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000/";
+export const BASE_URL = "https://lecture-schedule.onrender.com/";
 
 export const themeColor = {
   primary: "#FFB534",
