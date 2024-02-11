@@ -37,13 +37,17 @@ function Dashboard() {
             </div>
           </div>
           <div>
-            {courseList.length
-              ? courseList.map((course) => (
-                  <div key={course?._id} className="mb-3">
-                    <CourseCard data={course} />
-                  </div>
-                ))
-              : ""}
+            {courseList.length ? (
+              courseList.map((course) => (
+                <div key={course?._id} className="mb-3">
+                  <CourseCard data={course} />
+                </div>
+              ))
+            ) : (
+              <div className="border rounded text-center text-danger p-5">
+                No course uploaded
+              </div>
+            )}
           </div>
         </div>
       )}

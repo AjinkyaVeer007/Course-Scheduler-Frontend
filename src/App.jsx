@@ -8,6 +8,7 @@ import Dashboard from "./herosections/Dashboard";
 import Schedule from "./herosections/Schedule";
 import Instructor from "./herosections/Instructor";
 import UploadCourse from "./herosections/UploadCourse";
+import ForgetPassword from "./pages/ForgetPassword";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,6 +19,10 @@ function App() {
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/changepassword",
+      element: <ForgetPassword />,
     },
     {
       path: "/main",

@@ -3,11 +3,31 @@ import { Table } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { useInstructorList } from "../utils/useInstructorList";
 import { useSelector } from "react-redux";
+import { useApiHandler } from "../utils/useApiHandler";
+import { BASE_URL } from "../utils/constant";
+import toast from "react-hot-toast";
 
 function InstructorList() {
   const instructorList = useSelector((state) => state.instructordata.data);
 
   const getInstructor = useInstructorList();
+  const apiHandler = useApiHandler();
+
+  const userType = localStorage.getItem("userType");
+
+  const handleDeleteInstructor = async (id) => {
+    const apiData = {
+      method: "delete",
+      url: BASE_URL + `api/v1/user/delete/${userType}/${id}`,
+    };
+
+    const response = await apiHandler(apiData);
+
+    if (response?.success) {
+      toast.success(response?.message);
+      getInstructor();
+    }
+  };
 
   useEffect(() => {
     getInstructor();
@@ -36,12 +56,20 @@ function InstructorList() {
                 <td>{user?.email}</td>
                 <td>{user?.oneTimePassword}</td>
                 <td>
-                  <MdDelete color="tomato" size={"20px"} />
+                  <MdDelete
+                    onClick={() => handleDeleteInstructor(user?._id)}
+                    color="tomato"
+                    size={"20px"}
+                  />
                 </td>
               </tr>
             ))
           ) : (
-            <tr></tr>
+            <tr>
+              <td colSpan={5} className="text-danger text-center">
+                No instructor created
+              </td>
+            </tr>
           )}
         </tbody>
       </Table>

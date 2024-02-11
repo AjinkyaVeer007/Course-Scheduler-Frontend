@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useApiHandler } from "../utils/useApiHandler";
 import toast, { Toaster } from "react-hot-toast";
 
-function Login() {
+function ForgetPassword() {
   const apihandler = useApiHandler();
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ function Login() {
   const handleValidation = () => {
     const validations = {
       email: !regexPatternForEmail.test(form.email),
-      password: !form.password.length,
+      password: !regexPatternForPassword.test(form.password),
     };
     setIsInValid((prev) => ({
       ...prev,
@@ -44,7 +44,7 @@ function Login() {
     return Object.values(validations).every((isValid) => !isValid);
   };
 
-  const handleLogin = async () => {
+  const handleChangePassword = async () => {
     setIsLoading(true);
     const frontendValidation = handleValidation();
 
@@ -79,10 +79,10 @@ function Login() {
       <div className="row justify-content-center mt-5">
         <div className="col-4">
           <div className="border rounded p-4 shadow-sm">
-            <div className="fs-3 fw-bold text-center">Login</div>
+            <div className="fs-3 fw-bold text-center">Change Password</div>
             <div className="border-bottom my-3"></div>
             <Form.Group className="mb-3">
-              <Form.Label className="fw-medium">Email</Form.Label>
+              <Form.Label className="fw-medium">Registered Email</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter email"
@@ -96,7 +96,7 @@ function Login() {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label className="fw-medium">Password</Form.Label>
+              <Form.Label className="fw-medium">New Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Enter password"
@@ -109,26 +109,17 @@ function Login() {
                 Please enter valid password
               </Form.Control.Feedback>
             </Form.Group>
-            <div className="fw-medium">
-              Dont have account?{" "}
-              <span
-                onClick={() => navigate("/register")}
-                style={{ color: themeColor.primary }}
-                className="pointer text-decoration-underline"
-              >
-                Register now
-              </span>{" "}
-            </div>
             <div
-              onClick={() => navigate("/changepassword")}
-              className="pointer text-decoration-underline text-end mb-3 mt-2"
+              onClick={() => navigate("/")}
+              style={{ color: themeColor.primary }}
+              className="pointer text-decoration-underline mb-3 mt-2"
             >
-              Forget password
+              Back to login
             </div>
             <Button
               name={"Login"}
               bgColor={themeColor.primary}
-              handleClick={handleLogin}
+              handleClick={handleChangePassword}
               preIcon={isLoading && <Spinner size="sm" />}
             />
           </div>
@@ -138,4 +129,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgetPassword;
