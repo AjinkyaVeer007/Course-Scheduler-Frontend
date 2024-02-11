@@ -1,16 +1,16 @@
 import React from "react";
 import { RiLogoutCircleRLine } from "react-icons/ri";
-import {
-  activeNavTab,
-  navTabs,
-  notactiveNavTab,
-  themeColor,
-} from "../utils/constant";
+import { activeNavTab, navTabs, notactiveNavTab } from "../utils/constant";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
   return (
     <div className="px-4 py-2 bg-white d-flex align-items-center justify-content-between sticky-top">
       <div
@@ -39,7 +39,7 @@ function Navbar() {
         </div>
       )}
       <div>
-        <RiLogoutCircleRLine size={"20px"} />
+        <RiLogoutCircleRLine size={"20px"} onClick={handleLogout} />
       </div>
     </div>
   );
