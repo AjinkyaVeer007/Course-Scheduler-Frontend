@@ -6,12 +6,18 @@ export const useApiHandler = () => {
   const navigate = useNavigate();
 
   return async function (data) {
+    // access-token
+    const Header = {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    };
     try {
       let response;
       if (data?.method === "get" || data?.method === "delete") {
-        response = await axios[data?.method](data?.url);
+        response = await axios[data?.method](data?.url, Header);
       } else {
-        response = await axios[data?.method](data?.url, data?.data);
+        response = await axios[data?.method](data?.url, data?.data, Header);
       }
       return response.data;
     } catch (error) {
